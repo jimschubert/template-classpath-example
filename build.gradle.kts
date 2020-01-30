@@ -1,5 +1,6 @@
 plugins {
     kotlin("jvm") version "1.3.61"
+    `maven-publish`
 }
 
 group = "org.openapitools.samples"
@@ -20,5 +21,13 @@ tasks {
     }
     compileTestKotlin {
         kotlinOptions.jvmTarget = "1.8"
+    }
+}
+
+publishing {
+    publications {
+        create<MavenPublication>("maven") {
+            from(components["java"])
+        }
     }
 }
